@@ -95,8 +95,8 @@ def orthantree(scaled, capacity=8):
     return tree, indices, depths
 
 def child_boxes(tree, indices, descent):
-    subscripts = (descent + 1)/2
-    return tree.children[(indices, *subscripts.T)]
+    subscripts = ((descent + 1)/2).long()
+    return tree.children[(indices.long(), *subscripts.T)]
 
 def neighbour_boxes(tree, indices, directions):
     """Finds the neighbour of `indices` in the tree in the given direction.
